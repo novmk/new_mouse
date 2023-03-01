@@ -42,8 +42,8 @@ function draw() {
 	  noStroke();
 	  fill(0, 0, 0);
       background(255, 255, 255);
-	  ellipse(positions[27][0], positions[27][1] + 25, 52, 68);
-	  ellipse(positions[32][0], positions[32][1] + 25, 52, 68); 
+	  ellipse(positions[27][0], positions[27][1] + 27, 52, 68);
+	  ellipse(positions[32][0], positions[32][1] + 27, 52, 68); 
       
       // add lines on eyebrow
       noFill();
@@ -87,7 +87,7 @@ function draw() {
       let eyeLeftB = createVector(positions[68][0], positions[68][1]);
       let eyeLeftDist = eyeLeftB.y - eyeLeftT.y;
       console.log(eyeLeftDist);
-      if (eyeLeftDist > 0 && eyeLeftDist < 1) {
+      if (eyeLeftDist > 1 && eyeLeftDist < 2) {
         stroke(0, 255, 0);
         strokeWeight(1);
         noFill();
@@ -98,7 +98,7 @@ function draw() {
       let eyeRightB = createVector(positions[64][0], positions[64][1]);
       let eyeRightDist = eyeRightB.y - eyeRightT.y;
       console.log(eyeRightDist);
-      if (eyeRightDist > 0 && eyeRightDist < 1) {
+      if (eyeRightDist > 0 && eyeRightDist < 1.2) {
         stroke(0, 0, 255);
         strokeWeight(1);
         noFill();
