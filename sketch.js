@@ -23,52 +23,87 @@ function setup() {
 }
 
 function draw() {
-    image(capture, 0, 0, width, height);
+    // image(capture, 0, 0, width, height);
     let positions = tracker.getCurrentPosition(); // updates the tracker with current positions
 
-    console.log(positions); // uncomment to see the list of arrays
+    // console.log(positions); // uncomment to see the list of arrays
   
-    // draw face outline
-  
-    noFill();
-    stroke(255);
-  
-    beginShape();
-    for (let i = 0; i < positions.length; i++) {
-        vertex(positions[i][0], positions[i][1]);
-    }
-    endShape();
-
-    // draw dots + numbers
-	noStroke();
-	for (let i = 0; i < positions.length; i++) {
-	  fill(0, 255, 0);
-	  ellipse(positions[i][0], positions[i][1], 4, 4);
-	  text(i, positions[i][0], positions[i][1]);
-	}
-
-	// add circle on nose
+    
 	if (positions.length > 0) {
+      // draw dots + numbers
+      noStroke();
+      for (let i = 0; i < positions.length; i++) {
+        fill(0, 255, 0);
+        ellipse(positions[i][0], positions[i][1], 4, 4);
+        text(i, positions[i][0], positions[i][1]);
+      }
+      
+      // add circle on eye
 	  noStroke();
-	  fill(0, 255, 255);
-	  ellipse(positions[62][0], positions[62][1], 50, 50);
-	}
-
-	// draw dots + numbers
-	  noStroke();
-	  for (let i = 0; i < positions.length; i++) {
-	    fill(0, 255, 0);
-	    ellipse(positions[i][0], positions[i][1], 4, 4);
-	    text(i, positions[i][0], positions[i][1]);
-	  }
-	  
-	    if (positions.length > 0) {
-	      let mouthLeft = createVector(positions[44][0], positions[44][1]);
-	      let mouthRight = createVector(positions[50][0], positions[50][1]);
-	      let smile = mouthLeft.dist(mouthRight);
-	      print(smile);
-	      
-	    // smile bar
-	    rect(20, 20, smile * 3, 20);
+	  fill(0, 0, 0);
+      background(255, 255, 255);
+	  ellipse(positions[27][0], positions[27][1] + 18, 34, 50);
+	  ellipse(positions[32][0], positions[32][1] + 18, 34, 50); 
+      
+      // add lines on eyebrow
+      noFill();
+      stroke(0);
+      strokeWeight(2);
+      strokeCap(ROUND);
+      strokeJoin(ROUND);
+      
+      beginShape();
+      vertex(positions[19][0], positions[19][1]);
+      vertex(positions[20][0], positions[20][1]);
+      vertex(positions[21][0], positions[21][1]);
+      vertex(positions[22][0], positions[22][1]);
+      endShape();
+      
+      beginShape();
+      vertex(positions[18][0], positions[18][1]);
+      vertex(positions[17][0], positions[17][1]);
+      vertex(positions[16][0], positions[16][1]);
+      vertex(positions[15][0], positions[15][1]);
+      endShape();
+      
+      beginShape();
+      vertex(positions[23][0], positions[23][1]);
+      vertex(positions[63][0], positions[63][1]);
+      vertex(positions[24][0], positions[24][1]);
+      vertex(positions[64][0], positions[64][1]);
+      vertex(positions[25][0], positions[25][1]);
+      endShape();
+      
+      beginShape();
+      vertex(positions[30][0], positions[30][1]);
+      vertex(positions[68][0], positions[68][1]);
+      vertex(positions[29][0], positions[29][1]);
+      vertex(positions[67][0], positions[67][1]);
+      vertex(positions[28][0], positions[28][1]);
+      endShape();
+      
+      // click event show
+      let eyeLeftT = createVector(positions[29][0], positions[29][1]);
+      let eyeLeftB = createVector(positions[68][0], positions[68][1]);
+      let eyeLeftDist = eyeLeftB.y - eyeLeftT.y;
+      // console.log(eyeLeftDist);
+      if (eyeLeftDist > 0 && eyeLeftDist < 2.2) {
+        stroke(0, 255, 0);
+        strokeWeight(1);
+        noFill();
+        ellipse(mouseX, mouseY, 100, 100);
+      }
+      
+      let eyeRightT = createVector(positions[24][0], positions[24][1]);
+      let eyeRightB = createVector(positions[64][0], positions[64][1]);
+      let eyeRightDist = eyeRightB.y - eyeRightT.y;
+      // console.log(eyeRightDist);
+      if (eyeRightDist > 0 && eyeRightDist < 2.2) {
+        stroke(0, 0, 255);
+        strokeWeight(1);
+        noFill();
+        ellipse(mouseX, mouseY, 100, 100);
+      }
+      
 	}
 }
