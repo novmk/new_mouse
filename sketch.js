@@ -42,8 +42,8 @@ function draw() {
 	  noStroke();
 	  fill(0, 0, 0);
       background(255, 255, 255);
-	  ellipse(positions[27][0], positions[27][1] + 18, 34, 50);
-	  ellipse(positions[32][0], positions[32][1] + 18, 34, 50); 
+	  ellipse(positions[27][0], positions[27][1] + 20, 44, 60);
+	  ellipse(positions[32][0], positions[32][1] + 20, 44, 60); 
       
       // add lines on eyebrow
       noFill();
