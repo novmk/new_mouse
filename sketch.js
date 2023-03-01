@@ -86,8 +86,8 @@ function draw() {
       let eyeLeftT = createVector(positions[29][0], positions[29][1]);
       let eyeLeftB = createVector(positions[68][0], positions[68][1]);
       let eyeLeftDist = eyeLeftB.y - eyeLeftT.y;
-      // console.log(eyeLeftDist);
-      if (eyeLeftDist > 1.2 && eyeLeftDist < 2.2) {
+      console.log(eyeLeftDist);
+      if (eyeLeftDist > 1.2 && eyeLeftDist < 2) {
         stroke(0, 255, 0);
         strokeWeight(1);
         noFill();
@@ -97,8 +97,8 @@ function draw() {
       let eyeRightT = createVector(positions[24][0], positions[24][1]);
       let eyeRightB = createVector(positions[64][0], positions[64][1]);
       let eyeRightDist = eyeRightB.y - eyeRightT.y;
-      // console.log(eyeRightDist);
-      if (eyeRightDist > 1.2 && eyeRightDist < 2.2) {
+      console.log(eyeRightDist);
+      if (eyeRightDist > 1.2 && eyeRightDist < 2) {
         stroke(0, 0, 255);
         strokeWeight(1);
         noFill();
